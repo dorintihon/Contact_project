@@ -1,13 +1,13 @@
 public class Contact {
-    private String contactName;
-    private int phoneNumber;
-    private String address;
-    private int groupCategory;
+    public String contactName;
+    public int phoneNumber;
+    public String address;
+    public int groupCategory;
 
     public Contact() {
-        contactName = "";
+        contactName = "none";
         phoneNumber = 0;
-        address = "";
+        address = "none";
         groupCategory = 0;
 
     }
@@ -49,4 +49,6 @@ public class Contact {
     public void setGroupCategory(int groupCategory) {
         this.groupCategory = groupCategory;
     }
+
+
 }

@@ -4,16 +4,15 @@ public class ContactListTest{
 
         ContactList list = new ContactList();
 
-        list.addContact( new Contact("Don", 5556667777, “5 Main Rd”, 1) );
+        list.addContact( new Contact("Don", 555666777, "5 Main Rd", 1) );
         //add more contacts
-
 
         // call ContactList’s method to print out all contact objects’ data in the contactList.
 
-
-        list.changePhoneNum(1, 6667778888);
-        list.changeAddress(3, “10 Mass Ave”);
+        list.changeContactPhoneNum(1, 666777888);
+        list.changeContactAddress(3, "10 Mass Ave");
         //add more calls to change a contact’s name, phone number, or address
+
 
 
 
@@ -30,3 +29,4 @@ public class ContactListTest{
 
     }
 }
+
