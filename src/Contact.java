@@ -1,8 +1,8 @@
 public class Contact {
-    public String contactName;
-    public int phoneNumber;
-    public String address;
-    public int groupCategory;
+    private String contactName;
+    private int phoneNumber;
+    private String address;
+    private int groupCategory;
 
     public Contact() {
         contactName = "none";
@@ -38,8 +38,9 @@ public class Contact {
         return address;
     }
 
-    public void setAddress(String address) {
+    public String setAddress(String address) {
         this.address = address;
+        return address;
     }
 
     public int getGroupCategory() {
