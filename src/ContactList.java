@@ -1,102 +1,128 @@
+//Dorin Tihon
+/**
+ ContactList class that contains an array of Contact objects with defining the methods
+ to be able to manage the objects.
+ */
 class ContactList
 {
-    Contact[] contact;
-    int count;
+    //Variables for this class;
+    private Contact[] contact;
+     private int contacts = 0;
 
-    ContactList()
+     //Default constructor
+    public ContactList()
     {
-        contact = new Contact[99];
-        count = 0;
+        contact = new Contact[50];
+
+    }
+    //Constructor
+    public ContactList(Contact[] contact) {
+        this.contact = contact;
+
     }
 
-    void addContact(Contact contact)
+    //addContact( … ) to add a contact object to the array.
+    public void addContact(Contact contact)
     {
-        this.contact[count] = contact;
-        count++;
+
+        this.contact[contacts] = contact;
+        contacts++;
     }
 
-    Contact changeContactName( int i, String n) //to change the name of a specific contact object (the ith one).
+    //changeContactName( int i, String n) to change the name of a specific contact object (the ith  one).
+    public void changeContactName( int i, String n)
     {
         contact[i].setContactName(n);
-        return contact[i];
+
     }
 
 
-    Contact changeContactPhoneNum( int i, int phone) //to change the phone number of a specific contact object.
+    //changeContactPhoneNum( int i, int phone) to change the phone number of a specific contact object.
+    public void changeContactPhoneNum( int i, int phone)
     {
         contact[i].setPhoneNumber(phone);
-        return contact[i];
+
     }
 
-
-    Contact changeContactAddress( int i, String add) //to change the address of a specific contact object.
+    //changeContactAddress( int i, String add) to change the address of a specific contact object.
+    public void changeContactAddress( int i, String add)
     {
         contact[i].setAddress(add);
-        return contact[i];
+
     }
 
-    Contact getNameFor(int i) // to retrieve the name of a specific contact object.
+    //getNameFor( int i ) to retrieve the name of a specific contact object.
+    public String getNameFor(int i)
     {
-        return contact[i];
+        return contact[i].getContactName();
     }
 
-    Contact getPhoneFor( int i ) // to retrieve the phone number of a specific contact object.
+    //getPhoneFor( int i ) to retrieve the phone number of a specific contact object
+    public long getPhoneFor(int i)
     {
-        return contact[i];
+        return contact[i].getPhoneNumber();
     }
 
-    Contact getAddressFor( int i ) // to retrieve the address of a specific contact object.
+
+    //getAddressFor( int i ) to retrieve the address of a specific contact object.
+    public String getAddressFor(int i)
     {
-        return contact[i];
+        return contact[i].getAddress();
     }
 
-    int getTotal( ) // to return the total number of contact objects in the contactArray.
+    //getTotal( ) to return the total number of contact objects in the array.
+    public int getTotal( )
     {
-        return contact.length - (contact.length - count);
+        return contact.length - (contact.length - contacts);
     }
 
-    Contact whosePhoneNum(int phoneNum) // to return the name of the contact for given phone number. If the phone number doesn’t exist, it should return an error message.
+    //whosePhoneNum(int phoneNum) to return the name of the contact for given phone number.
+    // If the phone number doesn’t exist, it should return an error message.
+    public String whosePhoneNum(int phoneNum)
     {
-        for(int i = 0; i< count; i++)
+        for(int i = 0; i< contacts; ++i)
         {
             if((contact[i].getPhoneNumber())==phoneNum)
             {
-                return contact[i];
+                return contact[i].getContactName();
             }
         }
+
         return null;
     }
 
 
-    Contact getGroup(int g) // returns an contactArray of contacts that are in groupCategory g.
-    {
+    // Method that returns an contactArray of contacts that are in groupCategory g.
+    public Contact[] getGroup(int g) {
         int i = 0;
-        while( i< count){
-            if(contact[i].getGroupCategory() == g) {
-                System.out.println(contact[i].getContactName());
-                return contact[i];
+        Contact[] group = new Contact[4];
+        while (i < contacts) {
+            if (contact[i].getGroupCategory() == g) {
+                 group[i] = contact[i];
             }
-            i++;
+            ++i;
         }
-        return null;
+
+        return group;
     }
 
 
-    boolean doesExist(Contact c) // returns true if a contact object c exists in the contactArray.
-    {
-        for(Contact i : contact)
-        {
-            if( i == c ) {
-                return true;
-            }
 
+    //doesExist(Contact c) returns true if a contact object c exists in the array.
+    public boolean doesExist(Contact c)
+    {
+        for(int i=0; i<contacts; ++i)
+        {
+            if(contact[i]==c)
+                return true;
         }
         return false;
     }
 
-    void getAllContacts() // returns the information on all contacts in the contactArray as a formatted String.
+    //getAllContacts() returns the information on all contacts in the array as a formatted String.
+    public void getAllContacts()
     {
-        for(int i = 0; i< count; i++)
+        for(int i = 0; i< contacts; ++i)
         {
             System.out.println("Name: " + contact[i].getContactName() + " -- Phone number: " + contact[i].getPhoneNumber()
                     + " -- Address: " + contact[i].getAddress() + " -- Group: " + contact[i].getGroupCategory() + "\n");
